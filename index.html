@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Text to PDF</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4CAF50">
+</head>
+<body>
+  <div id="app">
+    <h2>Text to PDF Converter</h2>
+    <textarea id="textInput" placeholder="Enter your text here..."></textarea>
+    <br>
+    <button id="openDownload">Download PDF</button>
+  </div>
+
+  <!-- Popup is hidden initially with class "hidden" -->
+  <div id="popupOverlay" class="hidden">
+    <div id="popup">
+      <h3>Download Options</h3>
+      <input type="text" id="filename" placeholder="Enter filename (default: document)">
+      <button onclick="downloadPDF()">Download PDF</button>
+      <button onclick="hidePopup()" class="cancel-btn">Cancel</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
