@@ -3,20 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Text to PDF</title>
+  <title>Text to PDF Converter</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#4CAF50">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
   <div id="app">
     <h2>Text to PDF Converter</h2>
     <textarea id="textInput" placeholder="Enter your text here..."></textarea>
-    <br>
+
+    <div class="options">
+        <label for="fontSelect">Font:</label>
+        <div class="font-size-container">
+            <!-- Font Style Dropdown on the right -->
+            <select id="fontSelect">
+                <option value="helvetica">Helvetica</option>
+                <option value="times">Times</option>
+                <option value="courier">Courier</option>
+            </select>
+    
+            <!-- Font Size Input on the left -->
+            <input type="number" id="fontSize" value="12" min="8" max="40" />
+        </div>
+    
+        <label for="lineSpacing">Line Spacing:</label>
+        <input type="range" id="lineSpacing" min="1" max="3" step="0.1" value="1">
+        <span id="lineSpacingValue">1</span>
+    </div>
+    
     <button id="openDownload">Download PDF</button>
   </div>
 
-  <!-- Popup is hidden initially with class "hidden" -->
+  <!-- Popup Overlay for Download Options -->
   <div id="popupOverlay" class="hidden">
     <div id="popup">
       <h3>Download Options</h3>
@@ -26,7 +47,9 @@
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- PDF Preview -->
+  <iframe id="pdfPreview" class="preview"></iframe>
+
   <script src="script.js"></script>
 </body>
 </html>
